@@ -50,7 +50,15 @@ generate() {
         "colors": {
           "frame": [$background],
           "frame_inactive": [$background],
+          "frame_incognito": [$background],
+          "frame_incognito_inactive": [$background],
+          "bookmark_text": [$foreground],
+          "tab_background_text": [$foreground],
+          "tab_background_text_inactive": [$foreground],
+          "tab_background_text_incognito": [$foreground],
+          "tab_background_text_incognito_inactive": [$foreground],
           "toolbar": [$accent],
+          "tab_text": [$foreground],
           "ntp_text": [$foreground],
           "ntp_link": [$accent],
           "ntp_section": [$secondary],
@@ -58,7 +66,9 @@ generate() {
           "toolbar_button_icon": [$foreground],
           "toolbar_text": [$foreground],
           "omnibox_background": [$background],
-          "omnibox_text": [$foreground]
+          "omnibox_text": [$foreground],
+          "button_background": [$foreground],
+          "control_button_background": [$background]
         },
         "properties": {
           "ntp_background_alignment": "bottom"
