@@ -8,6 +8,47 @@ THEME_NAME="Pywal"
 DIR=$(dirname "${BASH_SOURCE[0]}")
 THEME_DIR="$DIR/$THEME_NAME"
 
+# pywalfox algorithm color lightener
+foxyfy() {
+    python3 - "$@" <<'___HEREDOC'
+from sys import argv
+
+
+def hex_to_rgb(color):
+    """Convert a hex color to rgb."""
+    return tuple(bytes.fromhex(color.strip("#")))
+
+
+def rgb_to_hex(color):
+    """Convert an rgb color to hex."""
+    return "#%02x%02x%02x" % (*color,)
+
+
+def work(color, f):
+    pwf = float(f)
+    c = hex_to_rgb(color)
+    b = []
+    b.append(min((max(0, int(c[0] + (c[0] * pwf)))), 255))
+    b.append(min((max(0, int(c[1] + (c[1] * pwf)))), 255))
+    b.append(min((max(0, int(c[2] + (c[2] * pwf)))), 255))
+    return rgb_to_hex(b)
+
+
+print(work(argv[1],argv[2]))
+___HEREDOC
+}
+
+# pywalfox constants
+
+# light
+pwf_0=1.25
+# extra light
+pwf_1=1.85
+# extra extra light
+pwf_2=2.15
+# extra extra extra light
+pwf_3=2.75
+
 # Converts hex colors into rgb joined with comma
 # #fff -> 255, 255, 255
 hexToRgb() {
