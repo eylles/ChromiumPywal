@@ -71,34 +71,84 @@ prepare() {
 
 }
 
+use_pwfox_theme=""
 
-background=$(hexToRgb $background)
-foreground=$(hexToRgb $foreground)
-accent=$(hexToRgb $color11)
-secondary=$(hexToRgb $color8)
+# input parsing
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    pywalfox|pwf|pwfox|-p|--pywal-fox)
+        use_pwfox_theme=1
+        ;;
+  esac
+  shift
+done
 
 
-frame=$background
-frame_inactive=$background
-frame_incognito=$background
-frame_incognito_inactive=$background
-bookmark_text=$foreground
-tab_background_text=$foreground
-tab_background_text_inactive=$foreground
-tab_background_text_incognito=$foreground
-tab_background_text_incognito_inactive=$foreground
-tab_text=$foreground
-toolbar=$accent
-toolbar_button_icon=$foreground
-toolbar_text=$foreground
-ntp_text=$foreground
-ntp_link=$accent
-ntp_background=$foreground
-ntp_section=$secondary
-omnibox_text=$foreground
-omnibox_background=$background
-button_background=$foreground
-control_button_background=$background
+
+if [ -z "$use_pwfox_theme" ]; then
+    background=$(hexToRgb $background)
+    foreground=$(hexToRgb $foreground)
+    accent=$(hexToRgb $color12)
+    secondary=$(hexToRgb $color8)
+
+    frame=$background
+    frame_inactive=$background
+    frame_incognito=$background
+    frame_incognito_inactive=$background
+    bookmark_text=$foreground
+    tab_background_text=$foreground
+    tab_background_text_inactive=$foreground
+    tab_background_text_incognito=$foreground
+    tab_background_text_incognito_inactive=$foreground
+    tab_text=$foreground
+    toolbar=$accent
+    toolbar_button_icon=$foreground
+    toolbar_text=$foreground
+    ntp_text=$foreground
+    ntp_link=$accent
+    ntp_background=$foreground
+    ntp_section=$secondary
+    omnibox_text=$foreground
+    omnibox_background=$background
+    button_background=$foreground
+    control_button_background=$background
+else
+    bg1=$(foxyfy "$color0" "$pwf_0")
+    bg2=$(foxyfy "$color0" "$pwf_1")
+    bg3=$(foxyfy "$color0" "$pwf_2")
+    bg4=$(foxyfy "$color0" "$pwf_3")
+    background=$(hexToRgb $background)
+    background1=$(hexToRgb $bg1)
+    background2=$(hexToRgb $bg2)
+    background3=$(hexToRgb $bg3)
+    backgroundalt=$(hexToRgb $bg4)
+    foreground=$(hexToRgb $foreground)
+    accent=$(hexToRgb $color12)
+    highlight=$(hexToRgb $color10)
+    secondary=$(hexToRgb $color10)
+
+    frame=$background
+    frame_inactive=$background3
+    frame_incognito=$background1
+    frame_incognito_inactive=$background2
+    bookmark_text=$foreground
+    tab_background_text=$foreground
+    tab_background_text_inactive=$foreground
+    tab_background_text_incognito=$foreground
+    tab_background_text_incognito_inactive=$foreground
+    tab_text=$foreground
+    toolbar=$backgroundalt
+    toolbar_button_icon=$accent
+    toolbar_text=$foreground
+    ntp_text=$foreground
+    ntp_link=$highlight
+    ntp_background=$background2
+    ntp_section=$secondary
+    omnibox_text=$foreground
+    omnibox_background=$background1
+    button_background=$foreground
+    control_button_background=$background
+fi
 
 
 generate() {
@@ -136,7 +186,7 @@ generate() {
           "control_button_background": [$control_button_background]
         },
         "properties": {
-          "ntp_background_alignment": "bottom"
+          "ntp_background_alignment": "stretch"
         }
       }
     }
