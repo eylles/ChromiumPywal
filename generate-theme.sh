@@ -77,6 +77,30 @@ foreground=$(hexToRgb $foreground)
 accent=$(hexToRgb $color11)
 secondary=$(hexToRgb $color8)
 
+
+frame=$background
+frame_inactive=$background
+frame_incognito=$background
+frame_incognito_inactive=$background
+bookmark_text=$foreground
+tab_background_text=$foreground
+tab_background_text_inactive=$foreground
+tab_background_text_incognito=$foreground
+tab_background_text_incognito_inactive=$foreground
+tab_text=$foreground
+toolbar=$accent
+toolbar_button_icon=$foreground
+toolbar_text=$foreground
+ntp_text=$foreground
+ntp_link=$accent
+ntp_background=$foreground
+ntp_section=$secondary
+omnibox_text=$foreground
+omnibox_background=$background
+button_background=$foreground
+control_button_background=$background
+
+
 generate() {
     # Theme template
     cat > "$THEME_DIR/manifest.json" << EOF
@@ -89,27 +113,27 @@ generate() {
           "theme_ntp_background" : "$background_image"
         },
         "colors": {
-          "frame": [$background],
-          "frame_inactive": [$background],
-          "frame_incognito": [$background],
-          "frame_incognito_inactive": [$background],
-          "bookmark_text": [$foreground],
-          "tab_background_text": [$foreground],
-          "tab_background_text_inactive": [$foreground],
-          "tab_background_text_incognito": [$foreground],
-          "tab_background_text_incognito_inactive": [$foreground],
-          "tab_text": [$foreground],
-          "toolbar": [$accent],
-          "toolbar_button_icon": [$foreground],
-          "toolbar_text": [$foreground],
-          "ntp_text": [$foreground],
-          "ntp_link": [$accent],
-          "ntp_background": [$foreground],
-          "ntp_section": [$secondary],
-          "omnibox_text": [$foreground],
-          "omnibox_background": [$background],
-          "button_background": [$foreground],
-          "control_button_background": [$background]
+          "frame": [$frame],
+          "frame_inactive": [$frame_inactive],
+          "frame_incognito": [$frame_incognito],
+          "frame_incognito_inactive": [$frame_incognito_inactive],
+          "bookmark_text": [$bookmark_text],
+          "tab_background_text": [$tab_background_text],
+          "tab_background_text_inactive": [$tab_background_text_inactive],
+          "tab_background_text_incognito": [$tab_background_text_incognito],
+          "tab_background_text_incognito_inactive": [$tab_background_text_incognito_inactive],
+          "tab_text": [$tab_text],
+          "toolbar": [$toolbar],
+          "toolbar_button_icon": [$toolbar_button_icon],
+          "toolbar_text": [$toolbar_text],
+          "ntp_text": [$ntp_text],
+          "ntp_link": [$ntp_link],
+          "ntp_background": [$ntp_background],
+          "ntp_section": [$ntp_section],
+          "omnibox_text": [$omnibox_text],
+          "omnibox_background": [$omnibox_background],
+          "button_background": [$button_background],
+          "control_button_background": [$control_button_background]
         },
         "properties": {
           "ntp_background_alignment": "bottom"
