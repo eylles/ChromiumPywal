@@ -71,6 +71,24 @@ prepare() {
 
 }
 
+myname="${0##*/}"
+
+show_usage () {
+  printf '%s\n'   "Usage:"
+  printf '\t%s\n' "${myname} [-p] [-h]"
+}
+
+show_help () {
+  printf '%s\n'   "${myname}: generate a chromium theme"
+  show_usage
+  printf '\n%s\n' "Options:"
+  printf '%s\n'   "-p, --pywal-fox, pywalfox, pwfox, pwf"
+  printf '\t%s\n' "Build a theme with colors matching those of pywalfox."
+  printf '%s\n'   "help, -h -help --help"
+  printf '\t%s\n' "Show this message."
+}
+
+
 use_pwfox_theme=""
 nobuild=""
 
@@ -79,6 +97,14 @@ while [ "$#" -gt 0 ]; do
   case "$1" in
     pywalfox|pwf|pwfox|-p|--pywal-fox)
         use_pwfox_theme=1
+        ;;
+    help|-h|-help|--help)
+        show_help
+        nobuild=0
+        ;;
+    *)
+        show_usage
+        exit 1
         ;;
   esac
   shift
