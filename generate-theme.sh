@@ -72,6 +72,7 @@ prepare() {
 }
 
 use_pwfox_theme=""
+nobuild=""
 
 # input parsing
 while [ "$#" -gt 0 ]; do
@@ -193,6 +194,12 @@ generate() {
 EOF
 }
 
-prepare
-generate
-echo "Pywal Chrome theme generated at $THEME_DIR"
+main () {
+    prepare
+    generate
+    echo "Pywal Chrome theme generated at $THEME_DIR"
+}
+
+if [ -z "$nobuild" ]; then
+    main
+fi
