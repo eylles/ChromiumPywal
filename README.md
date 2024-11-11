@@ -19,3 +19,4 @@ However, you need to run this script and restart chromium each time you change p
 So, make an alias or something like that.
 But you don't need to repeat the steps above, just run the script and that's it, chromium will update theme colors automatically. 😁
 
+you can always paste `chrome://restart` on the omnibar and hit enter
